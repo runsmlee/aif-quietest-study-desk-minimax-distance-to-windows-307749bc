@@ -62,6 +62,11 @@ export default function App() {
     setPlacementMode((prev) => (prev === 'desk' ? 'none' : 'desk'));
   }, []);
 
+  const handleStartPlacing = useCallback(() => {
+    setPlacementMode('desk');
+    canvasRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, []);
+
   const handleAddWindow = useCallback(() => {
     setPlacementMode((prev) => (prev === 'window' ? 'none' : 'window'));
   }, []);
@@ -185,11 +190,17 @@ export default function App() {
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            Quietest Desk
+            Desk Placement Calculator
           </h1>
           <p className="mt-1 text-gray-500 text-sm sm:text-base">
-            Place desks and windows on the grid, then find the desk farthest from every window.
+            Find the quietest spot in your room. Place windows and desks on the grid, then calculate the optimal desk position for maximum distance from noise.
           </p>
+          <button
+            onClick={handleStartPlacing}
+            className="mt-3 px-5 py-2.5 rounded-lg font-medium text-sm bg-brand-500 text-white hover:bg-brand-600 transition-colors focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+          >
+            Start Placing Desks →
+          </button>
         </div>
       </header>
 
