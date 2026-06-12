@@ -19,7 +19,7 @@ describe('App', () => {
   it('renders the heading without a trailing period', () => {
     render(<App />);
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading.textContent).toBe('Desk Placement Calculator');
+    expect(heading.textContent).toBe('Quietest Spot in a Room Calculator');
     expect(heading.textContent).not.toMatch(/\.\s*$/);
   });
 
